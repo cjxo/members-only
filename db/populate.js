@@ -26,7 +26,7 @@ const SQL =
 async function main() {
   console.log("Seeding...");
   const client = new Client({
-    host: "localhost",
+    host: process.env.PGHOST,
     user: process.env.PGUSER,
     database: process.env.PGDATABASE,
     password: process.env.PGPASSWORD,
