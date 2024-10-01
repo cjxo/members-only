@@ -4,7 +4,7 @@ const ms = require("../membership-status-enums");
 
 const getIndex = async (req, res) => {
   const posts = await db.getPosts();
-  res.render("index", { theUser: req.user, posts: posts });
+  res.render("index", { theUser: req.user, posts: posts.reverse() });
 };
 
 const getSignIn = (req, res) => {
