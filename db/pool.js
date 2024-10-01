@@ -8,4 +8,4 @@ module.exports = new Pool({
   password: process.env.PGPASSWORD,
   port: process.env.PGPORT
 });
-console.log(process.env.PGPORT);
+console.log(process.env.PGHOST);
