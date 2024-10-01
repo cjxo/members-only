@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Members Only | Sign Up</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="members-only-h">
+          <h1>MEMBERS ONLY</h1>
+        </a>
+        <section class="ahaacc-section">
+          <p>Already have an account?</p>
+          <ul class="nav-links">
+            <li>
+              <a href="/sign-in">
+                <button class="sign-up-btn">
+                  Sign In
+                </button>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    </header>
+
+    <main>
+      <section class="form-section">
+        <h1>Sign Up to <span class="span-style">Members Only</span></h1>
+        <form class="sign-in-form" method="POST" action="/sign-up">
+          <div class="label-input-pair">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first_name" placeholder="Your First Name" required />
+          </div>
+          
+          <div class="label-input-pair">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last_name" placeholder="Your Last Name" required />
+          </div>
+          
+          <div class="label-input-pair">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Your Username" required />
+          </div>
+
+          <div class="label-input-pair">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Your Password" required />
+          </div>
+          <% if (locals.error) { %>
+            <span style="color: red; border: 1px solid transparent;">Username already exists!</span>
+          <% } %>
+          <button>Continue</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

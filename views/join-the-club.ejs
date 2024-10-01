@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Members Only | Sign In</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="members-only-h">
+          <h1>MEMBERS ONLY</h1>
+        </a>
+        <ul class="nav-links">
+          <li>
+            <a href="/sign-out">
+              <button class="sign-up-btn">
+                Sign Out
+              </button>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="form-section">
+        <h1>Enter the <span class="span-style">Answer To The Riddle</span></h1>
+        <form class="sign-in-form" method="POST" action="/join-the-club/<%= riddle.id %>">
+
+          <div class="label-input-pair">
+            <!--<label for="secret-password">Secret Password <span class="hint">&#40;Hint&#58; read the posts&#33;&#41;</span></label>-->
+            <label for="secret-password"><%= riddle.question %></label>
+            <input type="text" id="secret-password" name="secret_password" placeholder="Your Answer" required />
+            <% if (locals.wrong) { %>
+              <span style="color: red; border: 1px solid transparent;">Wrong Answer!</span>
+            <% } %>
+          </div>
+
+          <button>Continue</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

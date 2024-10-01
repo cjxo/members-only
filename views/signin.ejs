@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Members Only | Sign In</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="members-only-h">
+          <h1>MEMBERS ONLY</h1>
+        </a>
+        <ul class="nav-links">
+          <li>
+            <a href="/sign-up">
+              <button class="sign-up-btn">
+                Sign Up
+              </button>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="form-section">
+        <h1>Sign In to <span class="span-style">Members Only</span></h1>
+        <form class="sign-in-form" method="POST" action="/sign-in">
+
+          <div class="label-input-pair">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Your Username" required />
+          </div>
+
+          <div class="label-input-pair">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Your Password" required />
+            <% if (locals.error) { %>
+              <span style="color: red; border: 1px solid transparent;">Invalid Credentials!</span>
+            <% } %>
+          </div>
+
+          <button>Continue</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

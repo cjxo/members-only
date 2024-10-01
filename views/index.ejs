@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Members Only | Home</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="members-only-h">
+          <h1>MEMBERS ONLY</h1>
+        </a>
+        <ul class="nav-links">
+        <% if (!locals.theUser) { %>
+          <li>
+            <a href="/sign-in">
+              <button class="sign-in-btn">
+                Sign In
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="/sign-up">
+              <button class="sign-up-btn">
+                Sign Up
+              </button>
+            </a>
+          </li>
+        <% } else {%>
+          <li>
+            <% if ((theUser.membership_status & 0x2) == 0) { %>
+            <a href="/join-the-club">
+              <button class="sign-up-btn join-the-club">
+                Join The Club!
+              </button>
+            </a>
+            <% } %>
+            <a href="/sign-out">
+              <button class="sign-up-btn">
+                Sign Out
+              </button>
+            </a>
+          </li>
+        <% } %>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <% if (locals.theUser) { %>
+        <section class="post-section">
+          <form method="POST" action="/post/<%= theUser.id %>">
+            <input text="text" id="post-title" name="post_title" placeholder="The Post Title" required />
+            <textarea id="user-post" name="user_post" placeholder="Say Something..." rows="3" required /></textarea>
+            <button>Post</button>
+          </form>
+        </section>
+      <% } %>
+      <section class="card-section"> 
+        <% if (locals.posts) { %>
+          <% posts.forEach(post => { %>
+            <div class="member-post-card">
+              <div class="card-header">
+                <% if (locals.theUser && ((theUser.membership_status & (0x2|0x4)) != 0)) { %>
+                  <h3><%= post.username %></h3>
+                  <h4><%= post.timestamp %></h4>
+                  <!--
+                  <div>
+                    <a href="#" onclick="deletePost(<%= post.id %>)"><button><img src="icons/trash-2.svg"/></button></a>
+                  </div> -->
+                <% } else {%>
+                  <h3>By A Member</h3>
+                  <h4>MM DD, YYYY</h4>
+                <% } %>
+              </div>
+              <h1><%= post.title %></h1>
+              <p>
+                <%= post.text %>
+              </p>
+            </div>
+          <% }); %>
+        <% } %>
+      </section>
+    </main>
+<!--
+    <script>
+      function deletePost(postId) {
+        console.log(postId);
+      }
+    </script>-->
+  </body>
+</html>
